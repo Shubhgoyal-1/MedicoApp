@@ -1,24 +1,32 @@
-import { DarkTheme, DefaultTheme, ThemeProvider } from '@react-navigation/native';
-import { Stack } from 'expo-router';
-import { StatusBar } from 'expo-status-bar';
-import 'react-native-reanimated';
-
-import { useColorScheme } from '@/hooks/use-color-scheme';
-
-export const unstable_settings = {
-  anchor: '(tabs)',
-};
+import { Stack } from "expo-router";
+import "./global.css";
+import { ImageBackground, View, StyleSheet } from "react-native";
+import { images } from "@/constants";
+import AppBackground from "../assets/Background.png";
 
 export default function RootLayout() {
-  const colorScheme = useColorScheme();
-
   return (
-    <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
-      <Stack>
-        <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-        <Stack.Screen name="modal" options={{ presentation: 'modal', title: 'Modal' }} />
-      </Stack>
-      <StatusBar style="auto" />
-    </ThemeProvider>
+    <ImageBackground
+      source={AppBackground}
+      style={styles.background}
+      resizeMode="cover"
+    >
+      <View style={styles.container}>
+        <Stack screenOptions={{ 
+          headerShown: false, 
+          contentStyle: { backgroundColor: 'transparent' } 
+          }} />
+      </View>
+    </ImageBackground>
   );
 }
+
+const styles = StyleSheet.create({
+  background: {
+    backgroundColor: "red",
+    flex: 1,
+  },
+  container: {
+    flex: 1,
+  },
+});
