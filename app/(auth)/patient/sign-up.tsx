@@ -1,15 +1,15 @@
-import { View, Text } from 'react-native';
-import React, { useState } from 'react';
-import StepIndicator from '@/Components/SignupCardsDoctor/StepIndicator';
-import { SafeAreaView } from 'react-native-safe-area-context';
+import FormCard from '@/Components/Cards/FormCard';
 import CustomButton from '@/Components/CustomButton';
+import StepIndicator from '@/Components/SignupCardsDoctor/StepIndicator';
 import RegisterCard1 from '@/Components/SignupCardsPatient/RegisterCard1';
-import { DoctorRegistrationForm, PatientRegistrationForm } from '@/types/type';
-import FormCard from '@/Components/FormCard';
-import { useRouter } from 'expo-router';
 import RegisterCard2 from '@/Components/SignupCardsPatient/RegisterCard2';
 import RegisterCard3 from '@/Components/SignupCardsPatient/RegisterCard3';
 import RegisterCard4 from '@/Components/SignupCardsPatient/RegisterCard4';
+import { PatientRegistrationForm } from '@/types/type';
+import { useRouter } from 'expo-router';
+import React, { useState } from 'react';
+import { ScrollView, View } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 
 const SignUp = () => {
@@ -27,7 +27,7 @@ const SignUp = () => {
     lastName: "",
     email: "",
     gender: "",
-      phone: "",
+    phone: "",
     password: "",
     aadharNo: "",
     dob: "",
@@ -51,9 +51,9 @@ const SignUp = () => {
     return 1
   });
   return (
-    <SafeAreaView className="flex-1 h-full">
+    <View className="flex-1 h-full pt-0">
       <View className='flex-1 px-4 flex-col justify-between h-full'>
-        <View className='mb-8'>
+        <View className='mb-4'>
           <StepIndicator current={step} total={4} />
         </View>
         <FormCard>
@@ -62,7 +62,7 @@ const SignUp = () => {
           {step === 3 && <RegisterCard3 form={form} setForm={setForm} />}
           {step === 4 && <RegisterCard4 form={form} setForm={setForm} />}
         </FormCard>
-        <View className='flex-row mt-12 items-center justify-between'>
+        <View className='flex-row mt-8 items-center justify-between'>
           <CustomButton
             title={'Previous'}
             textStyle='mx-auto'
@@ -77,7 +77,7 @@ const SignUp = () => {
           />
         </View>
       </View>
-    </SafeAreaView>
+    </View>
   );
 };
 export default SignUp;
