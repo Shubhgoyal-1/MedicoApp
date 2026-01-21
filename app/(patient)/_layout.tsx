@@ -7,6 +7,7 @@ import { Ionicons } from "@expo/vector-icons";
 
 import { Pressable } from "react-native";
 import { useRouter } from "expo-router";
+import TabBarIcon from '@/Components/TabBarIcon';
 
 const FloatingAppointmentButton = () => {
   const router = useRouter();
@@ -34,11 +35,14 @@ const FloatingAppointmentButton = () => {
     >
       <Ionicons name="add" size={36} color={isActive ? "#4aa6b5" : "#ffffff"} />
       <Text
+        style={{
+          color : isActive ? "#4aa6b5" : "#fff"
+        }}
         numberOfLines={1}
         ellipsizeMode="tail"
         className={cn(
           "text-[11px] font-semibold text-center text-white",
-          isActive ? "text-[#4aa6b5]" : "text-white"
+          // isActive ? "text-[#4aa6b5]" : "text-white"
         )}
       >
         Appointments
@@ -47,32 +51,6 @@ const FloatingAppointmentButton = () => {
   );
 };
 
-
-const TabBarIcon = ({ focused, icon, title, offsetX = 0, }: TabBarIconProps & { offsetX?: number }) => {
-  return (
-    <View
-      style={{
-        transform: [{ translateX: offsetX }],
-      }}
-      className={cn("tab-icon items-center gap-1 justify-center w-20 h-20 rounded-full", focused ? "bg-white" : "")}>
-      <Ionicons
-        name={icon}
-        size={26}
-        color={focused ? "#000000ff" : "#ffffffff"}
-      />
-      <Text
-        numberOfLines={1}
-        ellipsizeMode="tail"
-        className={cn(
-          "text-[11px] font-semibold text-center",
-          focused ? "text-black" : "text-white"
-        )}
-      >
-        {title}
-      </Text>
-    </View>
-  );
-};
 
 
 export default function PatientLayout() {

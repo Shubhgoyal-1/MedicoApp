@@ -1,4 +1,4 @@
-import { View, Text, Image, FlatList, ScrollView } from 'react-native';
+import { View, Text, Image, FlatList, ScrollView, Pressable } from 'react-native';
 import React from 'react';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { dummyMedications } from './medications';
@@ -8,7 +8,8 @@ import AppointmentCard from '@/Components/Cards/AppointmentCard';
 import VitalsCards from '@/Components/Cards/VitalsCard';
 import Section from '@/Components/Section';
 import Divider from '@/Components/Divider';
-
+import { useRouter } from "expo-router";
+import { useRef } from "react";
 const vitalsData = [
   {
     id: "hr",
@@ -30,6 +31,19 @@ const vitalsData = [
 ];
 
 const Dashboard = () => {
+  const lastTap = useRef<number | null>(null);
+  const router = useRouter();
+
+  const handlePress = () => {
+    const now = Date.now();
+
+    if (lastTap.current && now - lastTap.current < 300) {
+      router.push("/patient/profile");
+    } else {
+      lastTap.current = now;
+    }
+  };
+
   const activeMedications = dummyMedications.filter((m) => m.active);
   const upcomingAppointments = dummyAppointments.filter(
     (a) => a.status !== "Cancelled"
@@ -42,8 +56,6 @@ const Dashboard = () => {
         paddingBottom: 120
       }}
     >
-
-      {/* Header */}
       <View className="px-6 pt-4 pb-12 mb-2">
         <View className="flex-row justify-between items-center">
           <View>
@@ -57,13 +69,15 @@ const Dashboard = () => {
               Secure, Simple, Smart
             </Text>
           </View>
+          <Pressable onPress={handlePress}>
+            <Image
+              source={{
+                uri: "https://images.pexels.com/photos/614810/pexels-photo-614810.jpeg",
+              }}
+              className="w-32 h-32 rounded-full border-2 border-blue-500"
+            />
+          </Pressable>
 
-          <Image
-            source={{
-              uri: "https://images.pexels.com/photos/614810/pexels-photo-614810.jpeg",
-            }}
-            className="w-32 h-32 rounded-full border-2 border-blue-500"
-          />
         </View>
       </View>
 

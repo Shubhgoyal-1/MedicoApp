@@ -18,7 +18,7 @@ const MedicalRecordCard = ({ record }: Props) => {
     } = record;
 
     return (
-        <View className="bg-white border-2 border-blue-500 rounded-3xl p-5 flex-row items-start">
+        <View className="bg-white border-2 border-blue-500 rounded-3xl p-5 flex-row items-start mb-2">
             <View className="mr-4 mt-1">
                 <MaterialCommunityIcons
                     name="clipboard-text-outline"
@@ -28,7 +28,7 @@ const MedicalRecordCard = ({ record }: Props) => {
             </View>
             <View className="flex-1">
 
-                <Text className="text-2xl font-semibold text-black mb-3">
+                <Text className="text-xl font-semibold text-black mb-3">
                     {condition}
                 </Text>
 

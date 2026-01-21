@@ -49,7 +49,7 @@ const Report = () => {
 
       <View className="px-4 flex-row items-center justify-center">
         <Text style={{ fontSize: 40, lineHeight: 46, fontWeight: "900", color: "white" }}>
-          Records
+          Reports
         </Text>
       </View>
 

@@ -13,6 +13,7 @@ const CustomInput = ({
   labelStyle,
   textStyle,
   rightIcon,
+  editable = true,
 }: CustomInputProps) => {
   const [isFocused, setIsFocused] = useState(false);
 
@@ -33,11 +34,12 @@ const CustomInput = ({
       <View
         className={cn(
           "flex-row items-center rounded-xl border-2 px-3",
-          isFocused ? "border-blue-500" : "border-gray-500"
+          isFocused ? "border-blue-500" : "border-gray-500",
         )}
       >
         {/* Text Input */}
         <TextInput
+          editable={editable}
           autoCapitalize="none"
           autoCorrect={false}
           value={value}

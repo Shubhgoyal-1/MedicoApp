@@ -32,7 +32,7 @@ const MedicalReportCard = ({ report }: Props) => {
             <View className="flex-row justify-between items-center mb-4">
                 <Text
                     numberOfLines={1}
-                    className="text-2xl font-semibold text-black flex-1 mr-3"
+                    className="text-xl font-semibold text-black flex-1 mr-3"
                 >
                     {reportName}
                 </Text>

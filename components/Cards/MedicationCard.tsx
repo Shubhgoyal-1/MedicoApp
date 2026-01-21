@@ -10,9 +10,9 @@ const MedicationCard = ({ item }: Props) => {
     const { medicationId, dosage, time, startDate, endDate } = item;
 
     return (
-        <View className="bg-white border-blue-500 border-2 rounded-3xl p-4 flex-row items-center">
+        <View className="bg-white border-blue-500 border-2 rounded-3xl p-4 flex-row items-center mb-2">
 
-            <View className="mr-4">
+            <View className="mr-2">
                 <MaterialCommunityIcons
                     name="pill"
                     size={42}
@@ -23,7 +23,7 @@ const MedicationCard = ({ item }: Props) => {
             <View className="flex-1">
 
                 <View className="flex-row justify-between items-center">
-                    <Text className="text-2xl font-extrabold text-black">
+                    <Text className="text-xl font-extrabold text-black">
                         {medicationId.name} {dosage}
                     </Text>
 

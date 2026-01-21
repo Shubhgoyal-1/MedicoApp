@@ -36,6 +36,7 @@ declare interface CustomInputProps {
   labelStyle?: string
   textStyle?: string
   rightIcon?: React.ReactNode;
+  editable?: boolean
 }
 
 export type WorkplaceType = "hospital" | "clinic" | "";
@@ -102,9 +103,9 @@ export interface PatientRegistrationForm {
 
 
 declare interface TabBarIconProps {
-    focused: boolean;
-    icon: React.ComponentProps<typeof Ionicons>["name"];
-    title: string;
+  focused: boolean;
+  icon: React.ComponentProps<typeof Ionicons>["name"];
+  title: string;
 }
 
 export interface DoctorPopulated {
@@ -114,7 +115,7 @@ export interface DoctorPopulated {
 }
 export interface Appointment {
   patientId: string;
-  doctorId: DoctorPopulated; 
+  doctorId: DoctorPopulated;
   date: string;
   time: string;
   number?: number;
@@ -137,7 +138,7 @@ export interface PatientMedication {
   dosage: string;
   frequency: string;
   time: MedicationTime;
-  startDate?: string; 
+  startDate?: string;
   endDate?: string;
   active: boolean;
 }
@@ -161,10 +162,56 @@ export type AttentionNeed = "Critical" | "Minor" | "Normal";
 export interface MedicalReport {
   reportUniqueId: string
   reportName: string;
-  reportDate: string; 
+  reportDate: string;
   reportFileUri: string;
   notes?: string;
   doctorName?: string;
   doctorId?: string
   attentionNeed?: AttentionNeed;
 }
+
+
+export interface PatientDetails {
+  firstName: string;
+  lastName?: string;
+  email: string;
+  phone: string;
+  dob: string;
+  gender: Gender;
+  bloodGroup?: BloodGroup;
+  allergies?: string;
+  aadharNo: string;
+  fullAddress: FullAddressPatient;
+  avatarUrl?: string
+}
+
+
+
+export interface Patient {
+  firstName: string;
+  lastName: string;
+  email: string;
+  phone?: string;
+  gender?: Gender;
+  bloodGroup?: BloodGroup;
+  dob?: string;
+  allergies?: string;
+  fullAddress?: FullAddressPatient;
+  avatarUrl?: string
+
+  medications: PatientMedication[];
+  medicalReports: MedicalReport[];
+  medicalHistory: MedicalHistory[];
+}
+
+
+export interface AppointmentDoctor {
+  date: string;
+  time: string;
+  status: "Pending" | "Confirmed" | "Cancelled";
+  isFinished: boolean;
+
+  patientId: Patient;
+}
+
+
