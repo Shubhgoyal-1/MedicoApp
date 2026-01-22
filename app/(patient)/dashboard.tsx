@@ -1,15 +1,23 @@
+//Imported Components and Libraries
 import { View, Text, Image, FlatList, ScrollView, Pressable } from 'react-native';
-import React from 'react';
-import { SafeAreaView } from 'react-native-safe-area-context';
+import { useRef } from "react";
+
+//Imported Dummy Data
 import { dummyMedications } from './medications';
 import { dummyAppointments } from './appointments';
+
+// Imported Custom Components
 import MedicationCard from '@/Components/Cards/MedicationCard';
 import AppointmentCard from '@/Components/Cards/AppointmentCard';
 import VitalsCards from '@/Components/Cards/VitalsCard';
 import Section from '@/Components/Section';
 import Divider from '@/Components/Divider';
+
+//Imported Router for navigation
 import { useRouter } from "expo-router";
-import { useRef } from "react";
+
+
+// Dummy Vitals Data (Will be removed later)
 const vitalsData = [
   {
     id: "hr",
@@ -31,12 +39,13 @@ const vitalsData = [
 ];
 
 const Dashboard = () => {
-  const lastTap = useRef<number | null>(null);
+  //Making router instance
   const router = useRouter();
-
-  const handlePress = () => {
+  
+  //Handle Double Tap on Profile Picture to go to Profile Screen
+  const lastTap = useRef<number | null>(null);
+  const handleDoubleTap = () => {
     const now = Date.now();
-
     if (lastTap.current && now - lastTap.current < 300) {
       router.push("/patient/profile");
     } else {
@@ -44,6 +53,7 @@ const Dashboard = () => {
     }
   };
 
+  //Filtering Active Medications and Upcoming Appointments
   const activeMedications = dummyMedications.filter((m) => m.active);
   const upcomingAppointments = dummyAppointments.filter(
     (a) => a.status !== "Cancelled"
@@ -69,7 +79,7 @@ const Dashboard = () => {
               Secure, Simple, Smart
             </Text>
           </View>
-          <Pressable onPress={handlePress}>
+          <Pressable onPress={handleDoubleTap}>
             <Image
               source={{
                 uri: "https://images.pexels.com/photos/614810/pexels-photo-614810.jpeg",

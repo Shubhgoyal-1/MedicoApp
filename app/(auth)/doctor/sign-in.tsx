@@ -1,11 +1,14 @@
+//Imported Components and Libraries
 import { View, Text } from 'react-native';
-import React from 'react';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import CustomInput from '@/Components/CustomInput';
 import { Link, useRouter } from 'expo-router';
+
+//Imported Custom Components
+import CustomInput from '@/Components/CustomInput';
 import CustomButton from '@/Components/CustomButton';
 
 const SignIn = () => {
+  //Making router instance
   const router = useRouter()
   const submit = () => {
     router.push('/(doctor)/dashboard')

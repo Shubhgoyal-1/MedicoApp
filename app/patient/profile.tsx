@@ -1,16 +1,20 @@
-import CustomInput from "@/Components/CustomInput";
-import { useEffect, useState } from "react";
+//Imported Compenents and Libraries
 import {
     View,
     Text,
     Image,
     ScrollView,
-    TextInput,
     Pressable,
     KeyboardAvoidingView,
 } from "react-native";
-import { PatientDetails } from "@/types/type";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
+import { useState } from "react";
+
+//Imported Custom Components and Types
+import CustomInput from "@/Components/CustomInput";
+import { PatientDetails } from "@/types/type";
+
+//Dummy Patient Data
 
 const patient: PatientDetails = {
     firstName: "Shubh",
@@ -32,6 +36,8 @@ const patient: PatientDetails = {
 };
 
 const ProfileScreen = () => {
+    //States
+
     const [editable, setEditable] = useState(false)
     const originalAllergies = patient.allergies ?? "";
     const [allergies, setAllergies] = useState(originalAllergies);
@@ -39,7 +45,6 @@ const ProfileScreen = () => {
 
     const handleSaveAllergies = async () => {
         const trimmed = allergies.trim();
-
         if (trimmed === originalAllergies.trim()) {
             setAllergiesEditable(false);
             return;
@@ -51,18 +56,17 @@ const ProfileScreen = () => {
     };
 
     const onEditAvatar = () => {
-
     }
 
     return (
         <KeyboardAvoidingView style={{ flex: 1 }}>
-
             <ScrollView
                 className="flex-1"
                 showsVerticalScrollIndicator={false}
                 contentContainerStyle={{ paddingBottom: 40 }}
             >
 
+                {/* Avatar Section */}
                 <View className="mt-20 items-center mb-6">
                     <View className="relative">
                         <Image
@@ -84,8 +88,9 @@ const ProfileScreen = () => {
                     </View>
                 </View>
 
-                <View className="px-6 space-y-5">
+                {/* Details Section */}
 
+                <View className="px-6 space-y-5">
                     <CustomInput labelStyle="font-bold" editable={editable} label="First Name" value={patient.firstName} />
                     <CustomInput labelStyle="font-bold" editable={editable} label="Last Name" value={patient.lastName} />
                     <CustomInput labelStyle="font-bold" editable={editable} label="Email" value={patient.email} />
@@ -93,6 +98,7 @@ const ProfileScreen = () => {
                     <CustomInput labelStyle="font-bold" editable={editable} label="Date of Birth" value={patient.dob} />
                     <CustomInput labelStyle="font-bold" editable={editable} label="Gender" value={patient.gender} />
                     <CustomInput labelStyle="font-bold" editable={editable} label="Blood Group" value={patient.gender} />
+                    {/* Allergies is only editable */}
                     <CustomInput editable={allergiesEditable} labelStyle="font-bold"
                         rightIcon={
                             <Pressable
@@ -113,20 +119,15 @@ const ProfileScreen = () => {
                         value={allergies}
                         onChangeText={(text) => setAllergies(text)}
                     />
-
                     <CustomInput labelStyle="font-bold" editable={editable} label="Aadhar Number" value={patient.aadharNo} />
-
-                    <Text className="text-lg font-semibold text-black mt-6">
-                        Address
-                    </Text>
-
+                    <Text className="text-lg font-semibold text-black mt-6">Address</Text>
                     <CustomInput labelStyle="font-bold" editable={editable} label="House Number" value={patient.fullAddress.houseNumber} />
                     <CustomInput labelStyle="font-bold" editable={editable} label="Street / Address" value={patient.fullAddress.address} />
                     <CustomInput labelStyle="font-bold" editable={editable} label="Landmark" value={patient.fullAddress.landmark || " "} />
                     <CustomInput labelStyle="font-bold" editable={editable} label="City" value={patient.fullAddress.city} />
                     <CustomInput labelStyle="font-bold" editable={editable} label="State" value={patient.fullAddress.state} />
 
-                    {/* Button */}
+                    {/*SignOut Button */}
                     <Pressable className="bg-red-500 py-4 rounded-full mt-8 mb-10">
                         <Text className="text-white text-lg font-semibold text-center">
                             Sign Out

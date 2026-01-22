@@ -1,3 +1,4 @@
+//Imported Components and Libraries
 import CustomInput from "@/Components/CustomInput";
 import { useState } from "react";
 import {
@@ -9,7 +10,11 @@ import {
   KeyboardAvoidingView,
 } from "react-native";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
+
+//Imported Custom Components
 import Divider from "@/Components/Divider";
+
+//Dummy Doctor Data
 const doctor = {
   firstName: "Amit",
   lastName: "Verma",
@@ -33,6 +38,7 @@ const doctor = {
 
 
 const DoctorProfileScreen = () => {
+  //States
   const [editable, setEditable] = useState(false);
 
   const onEditAvatar = () => {

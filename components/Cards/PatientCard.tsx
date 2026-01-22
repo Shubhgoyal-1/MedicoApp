@@ -1,8 +1,9 @@
+// Imported Components and Libraries
 import { View, Text, Image } from "react-native";
-import { Patient } from "@/types/type";
+import { PatientForDoctor } from "@/types/type";
 
 interface PatientCardProps {
-  patient: Patient;
+  patient: PatientForDoctor;
 }
 
 const PatientCard = ({ patient }: PatientCardProps) => {

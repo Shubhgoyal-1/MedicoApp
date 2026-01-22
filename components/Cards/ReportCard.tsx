@@ -1,25 +1,20 @@
+// Imported Components and Libraries
 import { View, Text, Pressable } from "react-native";
+
+// Imported Types and Icons
 import { MedicalReport } from "@/types/type";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
+
+// Utility function to get styles based on attention level
+import { getAttentionStyles } from "@/lib/utils";
 
 interface Props {
     report: MedicalReport;
 }
 
-const getAttentionStyles = (attention?: string) => {
-    switch (attention) {
-        case "Critical":
-            return "text-red-500";
-        case "Minor":
-            return "text-yellow-500";
-        case "Normal":
-            return "text-green-600";
-        default:
-            return "text-gray-500";
-    }
-};
 
 const MedicalReportCard = ({ report }: Props) => {
+    // Destructure report details
     const {
         reportName,
         doctorName,

@@ -1,14 +1,15 @@
+// Imported Components and Libraries
 import { View, Text, Pressable } from "react-native";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
-import { MedicalHistory } from "@/types/type";
-import { useRouter } from "expo-router";
 
+// Imported Types
+import { MedicalHistory } from "@/types/type";
 interface Props {
     record: MedicalHistory;
 }
 
 const MedicalRecordCard = ({ record }: Props) => {
-    const router = useRouter();
+    // Destructure record details
 
     const {
         condition,

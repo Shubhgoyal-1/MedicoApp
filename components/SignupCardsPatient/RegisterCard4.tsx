@@ -1,9 +1,12 @@
-import React, { useEffect, useState } from 'react';
+// Imported Components and Libraries
+import React, { useState } from 'react';
 import { View, Text, Pressable } from 'react-native';
+import { Ionicons } from '@expo/vector-icons';
+
+// Imported Types and Custom Components
 import { PatientRegistrationForm } from '@/types/type';
 import CustomInput from '../CustomInput';
 
-import { Ionicons } from '@expo/vector-icons';
 type RegisterCard4Props = {
     form: PatientRegistrationForm;
     setForm: React.Dispatch<React.SetStateAction<PatientRegistrationForm>>;

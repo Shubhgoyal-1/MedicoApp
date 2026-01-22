@@ -1,14 +1,18 @@
+//Imported Components and Libraries
 import { Ionicons } from "@expo/vector-icons";
 import { View, Text } from "react-native";
 import cn from 'clsx';
+
+//Imported Types
 import { TabBarIconProps } from "@/types/type";
-const TabBarIcon = ({ focused, icon, title, offsetX = 0, }: TabBarIconProps & { offsetX?: number }) => {
+
+const TabBarIcon = ({ focused, icon, title, offsetX = 0, }: TabBarIconProps) => {
     return (
         <View
             style={{
                 transform: [{ translateX: offsetX }],
             }}
-            className={cn("tab-icon items-center gap-1 justify-center w-20 h-20 rounded-full", focused ? "bg-white" : "")}>
+            className={cn("tab-icon items-center gap-1 justify-center w-[68px] h-[68px] rounded-full", focused ? "bg-white" : "")}>
             <Ionicons
                 name={icon}
                 size={26}
@@ -18,7 +22,7 @@ const TabBarIcon = ({ focused, icon, title, offsetX = 0, }: TabBarIconProps & { 
                 numberOfLines={1}
                 ellipsizeMode="tail"
                 className={cn(
-                    "text-[11px] font-semibold text-center",
+                    "text-[10px] font-semibold text-center",
                     focused ? "text-black" : "text-white"
                 )}
             >

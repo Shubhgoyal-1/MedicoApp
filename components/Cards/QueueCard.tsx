@@ -1,3 +1,4 @@
+// Imported Components and Libraries
 import { View, Text, Pressable } from "react-native";
 
 interface QueueCardProps {

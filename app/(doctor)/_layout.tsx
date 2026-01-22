@@ -1,6 +1,8 @@
-import { View, Text } from 'react-native';
+//Imported Components and Libraries
 import React from 'react';
 import { Tabs } from 'expo-router';
+
+//Imported Custom Components and Libraries
 import TabBarIcon from '@/Components/TabBarIcon';
 export default function PatientLayout() {
   return (
@@ -43,7 +45,7 @@ export default function PatientLayout() {
               focused={focused}
               icon="home-outline"
               title="Dashboard"
-              offsetX={-4}
+              offsetX={-25}
             />
           ),
         }}
@@ -69,7 +71,7 @@ export default function PatientLayout() {
               focused={focused}
               icon="person"
               title="Profile"
-              offsetX={-4}
+              offsetX={25}
             />
           ),
         }}

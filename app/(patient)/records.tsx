@@ -1,10 +1,13 @@
-import { View, FlatList, Text, Pressable } from "react-native";
-import React from "react";
+//Imported Components and Libraries
+import { View, FlatList, Text } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
-import { Ionicons } from "@expo/vector-icons";
-import MedicalRecordCard from "@/Components/Cards/RecordCard";
-import { MedicalHistory } from "@/types/type";
+import { useState } from 'react';
 
+//Imported Types and Custom Components
+import { MedicalHistory } from "@/types/type";
+import MedicalRecordCard from "@/Components/Cards/RecordCard";
+
+//Dummy Records Data
 const dummyRecords: MedicalHistory[] = [
   {
     condition: "Cardiology Consultation",
@@ -53,20 +56,24 @@ const dummyRecords: MedicalHistory[] = [
 ]
 
 const Records = () => {
-  const records = dummyRecords
+  //States
+  const [records, setRecords] = useState<MedicalHistory[]>(dummyRecords)
+
   return (
     <SafeAreaView className="flex-1">
 
       <View className="px-4 flex-row items-center justify-center">
-        <Text style={{ fontSize: 40, lineHeight: 46, fontWeight: "900", color: "white" }}>
+        <Text style={{ fontSize: 40, lineHeight: 46, fontWeight: "400", color: "white" }}>
           Records
         </Text>
       </View>
 
+      {/* Records Cards Container */}
       <View
         style={{
           marginTop: 100,
         }}>
+          {/* Record Cards */}
         <FlatList
           data={records}
           keyExtractor={(_, index) => index.toString()}

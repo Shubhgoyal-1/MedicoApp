@@ -1,10 +1,15 @@
+//Imported Components and Libraries
 import { View, FlatList, Text, Pressable } from "react-native";
-import React from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { Ionicons } from "@expo/vector-icons";
+
+//Imported Types and Custom Components
 import MedicalReportCard from "@/Components/Cards/ReportCard";
 import { MedicalReport } from "@/types/type";
-const reports: MedicalReport[] = [
+import { useState } from "react";
+
+//Dummy Reports Data
+const dummyReports: MedicalReport[] = [
   {
     reportUniqueId: "REP-001",
     reportName: "Blood Sugar (HbA1c)",
@@ -43,20 +48,25 @@ const reports: MedicalReport[] = [
   },
 ]
 const Report = () => {
+  const [reports, setReports] = useState<MedicalReport[]>(dummyReports);
+
+  const addReport = ()=>{}
 
   return (
     <SafeAreaView className="flex-1">
 
       <View className="px-4 flex-row items-center justify-center">
-        <Text style={{ fontSize: 40, lineHeight: 46, fontWeight: "900", color: "white" }}>
+        <Text style={{ fontSize: 40, lineHeight: 46, fontWeight: "400", color: "white" }}>
           Reports
         </Text>
       </View>
 
+      {/* Reports Cards Container */}
       <View
         style={{
           marginTop: 100,
         }}>
+          {/* Report Cards */}
         <FlatList
           data={reports}
           keyExtractor={(_, index) => index.toString()}
@@ -72,9 +82,9 @@ const Report = () => {
           showsVerticalScrollIndicator={false}
         />
       </View>
+      {/* Add Report Button */}
       <Pressable
-        onPress={() => {
-        }}
+        onPress={addReport}
         className=" absolute bottom-28 right-6 bg-[#4aa6b5] w-20 h-20 rounded-full items-center justify-center elevation-6 active:opacity-80
         "
       >

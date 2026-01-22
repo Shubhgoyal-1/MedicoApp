@@ -1,18 +1,21 @@
-import { View, Text, Image } from 'react-native';
-import React from 'react';
-import { Tabs, usePathname } from 'expo-router';
-import cn from 'clsx';
-import { TabBarIconProps } from '@/types/type';
+//Imported Components and Libraries
+import { Text } from 'react-native';
 import { Ionicons } from "@expo/vector-icons";
-
 import { Pressable } from "react-native";
+
+//Imported Navigation Hooks
+import { Tabs, usePathname } from 'expo-router';
 import { useRouter } from "expo-router";
+
+//Imported Custom Components and Libraries
+import cn from 'clsx';
 import TabBarIcon from '@/Components/TabBarIcon';
 
 const FloatingAppointmentButton = () => {
+  //Making router instance
   const router = useRouter();
+  //Getting the pathname for custom appointment button 
   const pathname = usePathname();
-
   const isActive = pathname === "/appointments";
 
   return (
@@ -36,14 +39,11 @@ const FloatingAppointmentButton = () => {
       <Ionicons name="add" size={36} color={isActive ? "#4aa6b5" : "#ffffff"} />
       <Text
         style={{
-          color : isActive ? "#4aa6b5" : "#fff"
+          color: isActive ? "#4aa6b5" : "#fff"
         }}
         numberOfLines={1}
         ellipsizeMode="tail"
-        className={cn(
-          "text-[11px] font-semibold text-center text-white",
-          // isActive ? "text-[#4aa6b5]" : "text-white"
-        )}
+        className={"text-[11px] font-semibold text-center text-white"}
       >
         Appointments
       </Text>

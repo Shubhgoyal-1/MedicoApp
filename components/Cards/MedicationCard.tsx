@@ -1,5 +1,8 @@
+// Imported Components and Libraries
 import { View, Text } from "react-native";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
+
+// Imported Types
 import { PatientMedication } from "@/types/type";
 
 interface Props {
@@ -7,6 +10,7 @@ interface Props {
 }
 
 const MedicationCard = ({ item }: Props) => {
+    // Destructure medication details
     const { medicationId, dosage, time, startDate, endDate } = item;
 
     return (

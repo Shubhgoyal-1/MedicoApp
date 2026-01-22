@@ -1,10 +1,14 @@
-import React, { useEffect, useState } from 'react';
+// Imported Components and Libraries
+import { useState } from 'react';
 import { View, Text } from 'react-native';
-import { DoctorRegistrationForm, HospitalProps, PatientRegistrationForm } from '@/types/type';
+
+// Imported Types and Custom Components
+import { PatientRegistrationForm } from '@/types/type';
 import CustomInput from '../CustomInput';
 import EnumDropdown from '../EnumDropdown';
-import { WorkplaceType } from '@/types/enums';
 import { states } from '@/constants/states';
+
+// Imported Utility Functions
 import { getCitiesByState } from '@/lib/utils';
 type RegisterCard3Props = {
     form: PatientRegistrationForm;
@@ -16,7 +20,7 @@ export default function RegisterCard2({
     setForm,
 }: RegisterCard3Props) {
 
-    const [workplaceType, setWorkplaceType] = useState("hospital");
+    // Get cities based on selected state
     const cities = getCitiesByState(form.fullAddress.state || "")
 
     return (

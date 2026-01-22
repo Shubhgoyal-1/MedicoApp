@@ -1,19 +1,24 @@
+//Imported Components and Libraries
 import { View, Text, ScrollView, Pressable, Modal } from 'react-native';
 import React, { useState } from 'react';
-import { SafeAreaView } from 'react-native-safe-area-context';
-import { AppointmentDoctor } from "@/types/type";
+
+//Imported Custom Components and Types
 import PatientCard from '@/Components/Cards/PatientCard';
 import QueueCard from '@/Components/Cards/QueueCard';
 import MedicationCard from '@/Components/Cards/MedicationCard';
 import MedicalRecordCard from '@/Components/Cards/RecordCard';
 import MedicalReportCard from '@/Components/Cards/ReportCard';
 import AppointmentsModal from '@/Components/AppoinmentsModal';
+import { AppointmentDoctor } from "@/types/type";
+
+//Dummy Doctor Appointments Data
 export const dummyDoctorAppointments: AppointmentDoctor[] = [
   {
     date: "2025-01-12",
     time: "10:30 AM",
     status: "Confirmed",
     isFinished: false,
+    number:12,
 
     patientId: {
       firstName: "Rahul",
@@ -229,6 +234,7 @@ export const dummyDoctorAppointments: AppointmentDoctor[] = [
     time: "01:00 PM",
     status: "Pending",
     isFinished: false,
+    number:15,
 
     patientId: {
       firstName: "Sneha",
@@ -274,6 +280,8 @@ export const dummyDoctorAppointments: AppointmentDoctor[] = [
     },
   },
 ];
+
+// Tab Button Component to see the patient's info
 const TabButton = ({
   title,
   active,
@@ -301,7 +309,10 @@ const TabButton = ({
 
 type TabType = "medications" | "history" | "reports";
 
+//Improvement to be done use flatlist instead of scroll view and map for better performance and lazy loading
+
 const Dashboard = () => {
+  //States
   const [activeTab, setActiveTab] = useState<TabType>("medications");
   const [showQueue, setShowQueue] = useState(false);
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -315,11 +326,12 @@ const Dashboard = () => {
         className="flex-1"
         contentContainerStyle={{ paddingBottom: 120 }}>
         <View className="p-4 space-y-4">
+          {/* Queue Card */}
 
           <QueueCard
             name={`${appointment.patientId.firstName} ${appointment.patientId.lastName}`}
             time={appointment.time}
-            token={43}
+            token={appointment.number}
             onPress={() => setShowQueue(true)}
           />
 
@@ -378,6 +390,8 @@ const Dashboard = () => {
 
         </View>
       </ScrollView>
+
+      {/* Next Button and Finish Appointment */}
       <View className="absolute bottom-28 left-0 right-0 px-6">
         <Pressable
           onPress={() => {
@@ -392,6 +406,7 @@ const Dashboard = () => {
         </Pressable>
       </View>
 
+      {/* Appointments Modal and Finish Confirmation Modal */}
       <AppointmentsModal
         visible={showQueue}
         onClose={() => setShowQueue(false)}

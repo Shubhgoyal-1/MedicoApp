@@ -1,5 +1,8 @@
+// Imported Components and Libraries
 import { View, Text } from "react-native";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
+
+// Imported Types
 import { Vital } from "@/types/type";
 
 interface Props {

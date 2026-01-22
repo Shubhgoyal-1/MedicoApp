@@ -1,10 +1,13 @@
-import React, { useEffect, useState } from 'react';
+// Imported Components and Libraries
+import { useState } from 'react';
 import { View, Text, Pressable, Platform } from 'react-native';
-import { DoctorRegistrationForm, HospitalProps, PatientRegistrationForm } from '@/types/type';
+import DateTimePicker from "@react-native-community/datetimepicker";
+
+// Imported Types and Custom Components
+import { PatientRegistrationForm } from '@/types/type';
 import CustomInput from '../CustomInput';
 import EnumDropdown from '../EnumDropdown';
-import { BloodGroup, WorkplaceType } from '@/types/enums';
-import DateTimePicker from "@react-native-community/datetimepicker";
+import { BloodGroup } from '@/types/enums';
 
 type RegisterCard3Props = {
     form: PatientRegistrationForm;
@@ -14,6 +17,7 @@ export default function RegisterCard3({
     form,
     setForm,
 }: RegisterCard3Props) {
+    // States
     const [date, setDate] = useState<Date | null>(null);
     const [showPicker, setShowPicker] = useState(false);
     const onChange = (_: any, selectedDate?: Date) => {

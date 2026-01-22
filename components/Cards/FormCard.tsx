@@ -1,5 +1,5 @@
+// Imported Components and Libraries
 import { View } from "react-native";
-import React from "react";
 
 export default function FormCard({
   children,

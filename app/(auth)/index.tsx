@@ -1,15 +1,20 @@
-import { View, Text, TouchableOpacity } from 'react-native';
+//Imported Components and Libraries
+import { View, Text } from 'react-native';
 import { useRouter } from 'expo-router';
-import CustomButton from '@/Components/CustomButton';
 import { FontAwesome5, MaterialIcons } from '@expo/vector-icons';
 
+//Imported Custom Components
+import CustomButton from '@/Components/CustomButton';
+
+
+//The role Selection Screen
 export default function Index() {
+  //Making router instance
   const router = useRouter();
 
   return (
     <View className="flex-1 justify-center items-center gap-6 ">
       <Text className="text-2xl font-bold ">Continue as</Text>
-      {/*<View className={'bg-red-500 h-10 w-10 '}></View>*/}
       <CustomButton
         title="Patient"
         onPress={() => router.push('/(auth)/patient/sign-in')}

@@ -1,10 +1,13 @@
+//Imported Components and Libraries
 import { View, FlatList, Text, Pressable } from "react-native";
-import React, { useMemo, useState } from "react";
+import { useMemo, useState } from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
-import { Ionicons } from "@expo/vector-icons";
+
+//Imported Types and Custom Components
 import MedicationCard from "@/Components/Cards/MedicationCard";
 import { PatientMedication } from "@/types/type";
 
+//Dummy Medications Data
 export const dummyMedications: PatientMedication[] = [
   {
     medicationId: {
@@ -113,8 +116,10 @@ export const dummyMedications: PatientMedication[] = [
 ];
 
 const Medications = () => {
+
+  //States
   const [filter, setFilter] = useState<"current" | "all">("current");
-  const medications = dummyMedications
+  const [medications, setMedications] = useState(dummyMedications);
   const filteredMedications = useMemo(() => {
     if (filter === "current") {
       return medications.filter((m) => m.active);
@@ -122,9 +127,9 @@ const Medications = () => {
     return medications;
   }, [filter, medications]);
 
-
+  //Toggle Filter Header Component
   const ListHeader = () => (
-    <View className="flex-row justify-end mb-2">
+    <View className="flex-row justify-end mb-4">
       <Pressable
         onPress={() => setFilter("current")}
         className={`px-6 py-2 border-2  border-blue-500  ${filter === "current"
@@ -156,21 +161,20 @@ const Medications = () => {
     </View>
   );
 
-
-
   return (
     <SafeAreaView className="flex-1">
-
       <View className="px-4 flex-row items-center justify-center">
-        <Text style={{ fontSize: 40, lineHeight: 46, fontWeight: "900", color: "white" }}>
+        <Text style={{ fontSize: 40, lineHeight: 46, fontWeight: "400", color: "white" }}>
           Medications
         </Text>
       </View>
 
+      {/*Medication Cards Container */}
       <View
         style={{
           marginTop: 100,
         }}>
+          {/* Medication Cards */}
         <FlatList
           data={filteredMedications}
           keyExtractor={(_, index) => index.toString()}

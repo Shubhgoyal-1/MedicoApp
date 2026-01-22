@@ -1,7 +1,6 @@
-// components/EnumDropdown.tsx
+// Imported Components and Libraries
 import { View } from "react-native";
 import { Picker } from "@react-native-picker/picker";
-import { useState } from "react";
 
 type EnumDropdownProps<T extends string> = {
     value: T | "";

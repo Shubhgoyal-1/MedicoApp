@@ -1,8 +1,11 @@
+// Imported Components and Libraries
 import React from 'react';
 import { View, Text } from 'react-native';
-import { DoctorRegistrationForm } from '@/types/type';
+
+// Imported Types and Custom Components
 import CustomInput from '../CustomInput';
 import EnumDropdown from '../EnumDropdown';
+import { DoctorRegistrationForm } from '@/types/type';
 import { Gender } from '@/types/enums';
 
 type RegisterCard1Props = {

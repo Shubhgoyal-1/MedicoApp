@@ -1,27 +1,29 @@
+//Imported Components and Libraries
+import { useRouter } from 'expo-router';
+import { useState } from 'react';
+import { View } from 'react-native';
+
+//Imported Custom Components and types
 import FormCard from '@/Components/Cards/FormCard';
 import CustomButton from '@/Components/CustomButton';
 import RegisterCard1 from '@/Components/SignupCardsDoctor/RegisterCard1';
 import RegisterCard2 from '@/Components/SignupCardsDoctor/RegisterCard2';
 import RegisterCard3 from '@/Components/SignupCardsDoctor/RegisterCard3';
 import RegisterCard4 from '@/Components/SignupCardsDoctor/RegisterCard4';
-import StepIndicator from '@/Components/SignupCardsDoctor/StepIndicator';
+import StepIndicator from '@/Components/StepIndicator';
 import { DoctorRegistrationForm } from '@/types/type';
-import { useRouter } from 'expo-router';
-import React, { useState } from 'react';
-import { View } from 'react-native';
-import { SafeAreaView } from 'react-native-safe-area-context';
-
 
 const SignUp = () => {
+  //States
   const [step, setStep] = useState(1);
-
+  //Router instance
   const router = useRouter()
 
   const submit = () => {
     router.push('/(auth)/doctor/sign-in')
   }
 
-
+  //Initializing form state
   const [form, setForm] = useState<DoctorRegistrationForm>({
     firstName: "",
     lastName: "",
@@ -46,6 +48,7 @@ const SignUp = () => {
     }
   })
 
+  //Step Handlers
   const nextStep = () => setStep((s) => s + 1);
   const prevStep = () => setStep((s) => {
     if (s > 1) {
@@ -53,6 +56,7 @@ const SignUp = () => {
     }
     return 1
   });
+
   return (
     <View className="flex-1 h-full">
       <View className='flex-1 px-4 flex-col justify-between h-full'>

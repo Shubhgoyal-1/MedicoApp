@@ -1,15 +1,23 @@
-import React, { useEffect, useState } from 'react';
+// Imported Components and Libraries
+import { useState } from 'react';
 import { View, Text } from 'react-native';
-import { DoctorRegistrationForm, HospitalProps } from '@/types/type';
+
+// Imported Types and Custom Components
 import CustomInput from '../CustomInput';
 import EnumDropdown from '../EnumDropdown';
-import { WorkplaceType } from '@/types/enums';
 import { states } from '@/constants/states';
+import { DoctorRegistrationForm, HospitalProps } from '@/types/type';
+import { WorkplaceType } from '@/types/enums';
+
+// Imported Utility Function
 import { getCitiesByState } from '@/lib/utils';
+
 type RegisterCard3Props = {
     form: DoctorRegistrationForm;
     setForm: React.Dispatch<React.SetStateAction<DoctorRegistrationForm>>;
 };
+
+// Dummy Hospitals Data
 export const DUMMY_HOSPITALS: HospitalProps[] = [
     {
         name: "Apollo Hospitals",
@@ -57,7 +65,7 @@ export default function RegisterCard3({
     form,
     setForm,
 }: RegisterCard3Props) {
-
+    
     // const [hospitals, setHospitals] = useState<HospitalProps[]>([])
     // setHospitals(DUMMY_HOSPITALS)
     const hospitalNames = DUMMY_HOSPITALS.map((hospital) => hospital.name);

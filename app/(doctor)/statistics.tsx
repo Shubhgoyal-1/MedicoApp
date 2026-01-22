@@ -1,19 +1,24 @@
+//IMported Components and Libraries
 import { View, Text, ScrollView, Pressable } from "react-native";
-import React, { useState } from "react";
+import { useState } from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
-import { PieChart, BarChart } from "react-native-gifted-charts";
 import { Ionicons } from "@expo/vector-icons";
 import { LinearGradient } from "expo-linear-gradient";
+
+//Imported the Charts for Stats
+import { PieChart, BarChart } from "react-native-gifted-charts";
+
+//Imported Custom Components
 import Divider from "@/Components/Divider";
 
-/* ------------------ DROPDOWN OPTIONS ------------------ */
+//Dropdown Options
 const STAT_OPTIONS = [
   { label: "Gender Ratio", value: "gender" },
   { label: "Appointment Status", value: "status" },
   { label: "New vs Returning", value: "patientType" },
 ];
 
-/* ------------------ DUMMY DATA (replace with API) ------------------ */
+//Dummy Data for Pie Charts
 const DATA_MAP: any = {
   gender: {
     pie: [
@@ -43,11 +48,15 @@ const BAR_DATA = [
 ];
 
 const DoctorStatistics = () => {
+  //States
   const [selectedStat, setSelectedStat] = useState("gender");
   const [showDropdown, setShowDropdown] = useState(false);
+
+  //Extracting the dummy data for piechart
   const pieData = DATA_MAP[selectedStat].pie;
   const total = pieData.reduce((sum: any, i: any) => sum + i.value, 0);
 
+  //Converting the data into individual percentage
   const pieWithPercent = pieData.map((item: { value: number; }) => ({
     ...item,
     percent: Math.round((item.value / total) * 100),
@@ -62,6 +71,7 @@ const DoctorStatistics = () => {
             Statistics Overview
           </Text>
 
+          {/* Dropdown for showing the stats option */}
           <View className="mb-4">
             <Pressable
               onPress={() => setShowDropdown(!showDropdown)}
@@ -96,6 +106,7 @@ const DoctorStatistics = () => {
               </View>
             )}
           </View>
+          {/* Pie Chart */}
 
           <View className="p-6">
             <View className="rounded-2xl overflow-hidden mb-6 shadow-sm">
@@ -104,7 +115,7 @@ const DoctorStatistics = () => {
                 start={{ x: 0, y: 0 }}
                 end={{ x: 1, y: 1 }}
                 className="flex-row py-2 items-center justify-center"
-              >
+                >
                 <Ionicons name="pie-chart" size={24} color="white" />
                 <Text className="text-xl ml-2 font-bold text-white">
                   Distribution
@@ -119,14 +130,14 @@ const DoctorStatistics = () => {
                 radius={120}
                 innerRadius={70}
                 labelsPosition="outward"
-              />
+                />
               <View className="mt-4 space-y-2 absolute top-24">
                 {pieWithPercent.map((item: { color: any; text: any; percent: any }, index: any) => (
                   <View key={index} className="flex-row items-center">
                     <View
                       style={{ backgroundColor: item.color }}
                       className="w-3 h-3 rounded-full mr-2"
-                    />
+                      />
                     <Text className="text-gray-700">
                       {item.text} – {item.percent}%
                     </Text>
@@ -137,6 +148,9 @@ const DoctorStatistics = () => {
           </View>
 
           <Divider />
+
+          {/* Bar Chart */}
+          
           <View className="p-4">
             <View className="rounded-2xl overflow-hidden mb-4 shadow-sm">
               <LinearGradient

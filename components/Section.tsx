@@ -1,5 +1,7 @@
+//Imported Components and Libraries
 import { View, Text } from "react-native";
 
+//Used in Dashboard
 const Section = ({
     title,
     children,

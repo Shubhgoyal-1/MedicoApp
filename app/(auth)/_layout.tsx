@@ -1,7 +1,6 @@
-import React from "react";
-import { Navigator, Slot, Stack } from "expo-router";
-import { ImageBackground, Keyboard, KeyboardAvoidingView, Platform, TouchableWithoutFeedback } from "react-native";
-import appBackground from "../../assets/Background.png";
+//Imported Components and Libraries
+import { Stack } from "expo-router";
+import { Keyboard, KeyboardAvoidingView, Platform, TouchableWithoutFeedback } from "react-native";
 
 export default function AuthLayout() {
   return (

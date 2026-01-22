@@ -1,15 +1,19 @@
+// Imported Components and Libraries
 import { View, Text } from "react-native";
-import React from "react";
-import { Appointment } from "@/types/type";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
+
+// Imported Types
+import { Appointment } from "@/types/type";
 
 interface Props {
     appointment: Appointment;
 }
 
 const AppointmentCard = ({ appointment }: Props) => {
+    // Destructure appointment details
     const { doctorId, date, time } = appointment;
-
+    
+    // Format date to "DD MM YYYY"
     const formattedDate = new Date(date).toLocaleDateString("en-IN", {
         day: "2-digit",
         month: "short",

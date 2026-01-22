@@ -1,5 +1,6 @@
+// Imported Components and Libraries
 import { View, Text, TextInput } from 'react-native';
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { CustomInputProps } from "@/types/type";
 import cn from "clsx";
 

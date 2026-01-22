@@ -1,10 +1,12 @@
-import React, { useEffect, useState } from 'react';
+// Imported Components and Libraries
+import { useState } from 'react';
 import { View, Text, Pressable } from 'react-native';
-import { DoctorRegistrationForm, HospitalProps } from '@/types/type';
-import CustomInput from '../CustomInput';
 
-import { getCitiesByState } from '@/lib/utils';
+// Imported Types and Custom Components
+import { DoctorRegistrationForm } from '@/types/type';
+import CustomInput from '../CustomInput';
 import { Ionicons } from '@expo/vector-icons';
+
 type RegisterCard4Props = {
     form: DoctorRegistrationForm;
     setForm: React.Dispatch<React.SetStateAction<DoctorRegistrationForm>>;
@@ -14,6 +16,7 @@ export default function RegisterCard4({
     form,
     setForm,
 }: RegisterCard4Props) {
+    // States
     const [showPassword, setShowPassword] = useState(false);
     const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
